@@ -13,6 +13,9 @@ export default function Blog(){
         setBlogs([{title:formData.title,content:formData.content},...blogs])
         setFormData({title:"",content:""});
     }
+    function removeBlog(i){
+        setBlogs(blogs.filter((blog,index)=>i!==index));
+    }
 
     return(
         <>
@@ -58,7 +61,7 @@ export default function Blog(){
                 <h3>{blog.title}</h3>
                 <p>{blog.content}</p>
                 <div className="blog-btn">
-                    <button className="btn remove">
+                    <button  onClick={()=>removeBlog(i)} className="btn remove">
                         Delete
                     </button>
                 </div>
